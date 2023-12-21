@@ -1,0 +1,456 @@
+@import "./font";
+@import "./color";
+@import "./utli.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+li,
+a {
+  list-style: none;
+  color: black;
+  text-decoration: none;
+  caret-color: transparent;
+}
+
+button,
+label,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+select,
+a {
+  caret-color: transparent;
+}
+
+h1 {
+  font-size: $extra-large;
+}
+
+h2 {
+  font-size: $large;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  &__outer {
+    width: 100%;
+    max-width: 114rem;
+    margin-inline: auto;
+  }
+
+  &__inner {
+    width: 90%;
+    margin: auto;
+  }
+
+  &__header {
+    background-color: $color-primary;
+    padding-block: 1.4rem;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      a {
+        text-decoration: none;
+      }
+      li {
+        font-size: $large;
+        cursor: pointer;
+        padding-block: 0.5rem;
+        &:not(:last-of-type) {
+          margin-inline-end: 1.1rem;
+          padding-inline-end: 2rem;
+        }
+      }
+    }
+  }
+
+  &__signup {
+    height: 100vh;
+  }
+
+  &__user-list {
+    flex: 1 1 auto;
+    header {
+      display: grid;
+      grid-template-columns: minmax(30%, 55%) minmax(20%, 25%) minmax(
+          max-content,
+          16%
+        );
+      align-items: center;
+      gap: 2%;
+    }
+
+    &__cardBox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2%;
+    }
+    &__imageBox {
+      position: absolute;
+      left: calc(95% - 1.5vw);
+      top: 27%;
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+
+  &__auth {
+    min-width: 41rem;
+    // background-color: $color-tertiary;
+    margin: auto;
+    width: 33vw;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+    h2 {
+      text-align: center;
+    }
+
+    &__content {
+      margin-block: 0.3rem;
+      padding-block: 0.3rem;
+
+      label {
+        font-size: $medium;
+      }
+
+      input {
+        font-size: $normal;
+      }
+
+      label,
+      input {
+        margin-block: 0.5rem;
+        font-weight: $weight-normal;
+
+        &::placeholder {
+          font-weight: $weight-light;
+        }
+      }
+    }
+
+    &__button {
+      button {
+        width: 100%;
+        background-color: $color-secondary;
+        font-weight: 500;
+        font-size: $medium;
+        color: $color-primary;
+
+        &:hover {
+          outline: 2px solid #5eff8e;
+        }
+      }
+    }
+
+    &__link {
+      margin-bottom: 3.2rem;
+
+      a {
+        color: $color-primary;
+        font-weight: $weight-medium;
+      }
+      p,
+      a {
+        margin-inline: 0.2rem;
+      }
+      font-size: $normal;
+      display: flex;
+
+      justify-content: center;
+    }
+  }
+
+  &__action__button {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      border: none;
+      font-size: $medium;
+
+      &:first-of-type {
+        margin-right: 1rem;
+      }
+
+      &:last-of-type {
+        background-color: $color-primary;
+        color: $color-tertiary;
+
+        &:hover,
+        :focus-visible {
+          outline: 1px solid #aa96da;
+          border: 1.5px solid #f2eff9;
+          transition: 0.5ms;
+          transform: scaleY(1.05);
+        }
+      }
+    }
+  }
+}
+
+.save-btn {
+  border: none;
+  font-size: $medium;
+  background-color: $color-primary;
+  color: $color-tertiary;
+  &:hover,
+  :focus-visible {
+    outline: 1px solid #aa96da;
+    border: 1.5px solid #f2eff9;
+    transition: 0.5ms;
+    transform: scaleY(1.05);
+  }
+}
+
+.component {
+  &__input {
+    border: 1px solid $color-primary;
+    font-size: $normal;
+    padding: 1rem 1.5rem;
+    margin-block: 0.3rem;
+    border-radius: 0.5rem;
+    width: 100%;
+
+    &:focus,
+    &:focus-visible {
+      border: 2px solid $color-primary;
+      outline: none;
+    }
+  }
+
+  &__button {
+    border-radius: 0.6rem;
+    cursor: pointer;
+    padding: 1.1rem 4.1rem;
+    border: none;
+    font-size: $medium;
+    letter-spacing: 2px;
+    font-weight: $weight-medium;
+  }
+
+  &__checkbox {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid $color-primary;
+    margin: 0.9rem 0.9rem 0.9rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  &__radio {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    margin: 0.9rem 0.9rem 0.9rem 0;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid $color-primary;
+    button {
+      width: 1rem;
+      height: 1rem;
+      border: none;
+      border-radius: 50%;
+      background-color: $color-primary;
+    }
+  }
+
+  &__label {
+    margin-block: 0.3rem;
+    font-size: $medium;
+  }
+
+  &__selectBox {
+    font-size: $normal;
+    position: relative;
+    header {
+      border: 1px solid $color-primary;
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      border-radius: 0.5rem;
+      justify-content: space-between;
+
+      p {
+        color: rgba(0, 0, 0, 0.614);
+      }
+    }
+
+    ul {
+      position: absolute;
+      z-index: 1;
+      border-radius: 0.3rem;
+      background-color: $color-primary;
+      width: 100%;
+
+      li {
+        padding: 0.7rem;
+        border-radius: 0.3rem;
+
+        color: black;
+
+        &:hover {
+          background-color: $color-tertiary;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+
+  &__card {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding-block: 2rem;
+    margin-block: 1.1rem;
+    flex-basis: 32%;
+    border-radius: 0.7rem;
+    display: flex;
+
+    &__contentBox {
+      display: flex;
+      width: 90%;
+      margin-inline: auto;
+    }
+    &__textBox {
+      flex-basis: 85%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &__label-container {
+        margin-block: 1rem;
+
+        label {
+          font-size: $large;
+        }
+      }
+    }
+
+    &:hover {
+      .component__card__imageBox {
+        display: flex;
+      }
+    }
+    &__imageBox {
+      display: none;
+      // display: flex;
+      flex-direction: column;
+      flex-basis: 15%;
+      z-index: 1;
+      img {
+        cursor: pointer;
+        margin-block: 0.6rem;
+        width: 2rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+
+.container__offline {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__contentBox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+  }
+}
+
+.offline-btn {
+  margin-block: 1.4rem;
+  font-size: $large;
+  background-color: $color-primary;
+  color: $color-tertiary;
+}
+
+.popup-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-body {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: 30%;
+  right: 30%;
+  bottom: 43%;
+  top: 43%;
+  text-align: center;
+  margin: auto;
+  border-radius: 15px;
+  border-color: black;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.popup-contentBox {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+
+  button {
+    width: 50%;
+    margin-inline: auto;
+    margin-block: 0.9rem;
+    background-color: $color-primary;
+    color: $color-tertiary;
+  }
+}
